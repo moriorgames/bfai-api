@@ -1,0 +1,15 @@
+
+# System files
+.DS_Store
+.idea
+dump.rdb
+
+# Cache and logs
+var/cache/*
+!cache/.gitkeep
+var/logs/*
+!logs/.gitkeep
+
+# Managed by Composer
+vendor/*
+!vendor/.gitkeep
