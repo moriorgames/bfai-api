@@ -1,0 +1,10 @@
+
+# Ignore some system files
+.git
+.idea
+
+# Ignore cache
+/var/*
+
+# Ignore managed by composer
+/vendor/*

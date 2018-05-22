@@ -3,7 +3,7 @@
 use Symfony\Component\HttpFoundation\Request;
 use Core\Kernel;
 
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 $kernel = new Kernel('dev', true);
 $request = Request::createFromGlobals();

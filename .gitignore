@@ -6,9 +6,9 @@ dump.rdb
 
 # Cache and logs
 var/cache/*
-!cache/.gitkeep
+!var/cache/.gitkeep
 var/logs/*
-!logs/.gitkeep
+!var/logs/.gitkeep
 
 # Managed by Composer
 vendor/*
