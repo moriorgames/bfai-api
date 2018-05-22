@@ -44,4 +44,24 @@ class Kernel extends BaseKernel
             'skillsHeroes' => SkillsHeroesFixture::DATA,
         ]);
     }
+
+    /**
+     * Override cache dir
+     *
+     * @return string
+     */
+    public function getCacheDir()
+    {
+        return __DIR__ . '/../../var/cache/' . $this->environment;
+    }
+
+    /**
+     * Override logs dir
+     *
+     * @return string
+     */
+    public function getLogDir()
+    {
+        return __DIR__ . '/../../var/logs/';
+    }
 }
