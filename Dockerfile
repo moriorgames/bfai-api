@@ -14,7 +14,7 @@ RUN         LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php
 
 # Once the PPA is installed, update the local package cache to include its contents:
 RUN         apt-get update
-RUN         apt-get install -y php7.1 php7.1-mysql zip php7.1-xml
+RUN         apt-get install -y php7.2 php7.2-mysql zip php7.2-xml
 RUN         apt-get install -y vim
 
 # Install some packages to create http server

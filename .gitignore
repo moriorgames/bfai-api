@@ -13,3 +13,10 @@ var/logs/*
 # Managed by Composer
 vendor/*
 !vendor/.gitkeep
+
+###> symfony/framework-bundle ###
+/.env
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###

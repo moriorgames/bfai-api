@@ -1,6 +1,6 @@
 <?php
 
-namespace Fixtures;
+namespace App\Fixtures;
 
 class SkillsFixture
 {
