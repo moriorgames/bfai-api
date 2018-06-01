@@ -1,23 +1,30 @@
 version: '3'
 
+# Uncomment volumes line to work with the code base and perform changes on container at runtime
+
 services:
     api:
       image: moriorgames/bfai-api
+      container_name: bfai_api
       ports:
         - "5200:5200"
       links:
         - redis:redis
-      volumes:
-        - .:/var/www/html
+#      volumes:
+#        - .:/var/www/html
 
     battle_server:
       image: moriorgames/socket-server
+      container_name: bfai_socket
       ports:
         - "5100:5100"
       links:
         - redis:redis
+#      volumes:
+#        - .:/var/www/html
 
     redis:
       image: redis
+      container_name: bfai_redis
       ports:
         - "6379:6379"

@@ -2,20 +2,8 @@
 # docker build -t moriorgames/bfai-api .
 # Run command:
 # docker run -td --name bfai_api -p 5200:5200 moriorgames/bfai-api
-FROM        ubuntu:17.10
+FROM        moriorgames/php72-base
 MAINTAINER  MoriorGames "moriorgames@gmail.com"
-
-# Install packages
-RUN         apt-get update
-RUN         apt-get update -y
-RUN         apt-get install -y software-properties-common
-RUN         apt-get install -y language-pack-en-base
-RUN         LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php
-
-# Once the PPA is installed, update the local package cache to include its contents:
-RUN         apt-get update
-RUN         apt-get install -y php7.2 php7.2-mysql zip php7.2-xml
-RUN         apt-get install -y vim
 
 # Install some packages to create http server
 RUN         apt-get -y install git apache2
