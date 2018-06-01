@@ -10,8 +10,8 @@ services:
         - "5200:5200"
       links:
         - redis:redis
-#      volumes:
-#        - .:/var/www/html
+      volumes:
+        - .:/var/www/html
 
     battle_server:
       image: moriorgames/socket-server
