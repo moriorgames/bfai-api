@@ -1,3 +1,7 @@
 index:
     path: /data
     controller: App\Controller\DataController::index
+
+get_battle:
+    path: /get-battle
+    controller: App\Controller\BattleController::get

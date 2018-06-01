@@ -1,6 +1,6 @@
 <?php
 
-namespace Repository;
+namespace App\Repository;
 
 use App\Definitions\Token;
 use Predis\Client as RedisClient;

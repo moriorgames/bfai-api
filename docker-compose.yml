@@ -12,6 +12,8 @@ services:
         - redis:redis
       volumes:
         - .:/var/www/html
+      links:
+        - redis
 
     battle_server:
       image: moriorgames/socket-server
