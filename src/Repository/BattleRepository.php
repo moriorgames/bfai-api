@@ -7,6 +7,8 @@ use Predis\Client as RedisClient;
 
 class BattleRepository
 {
+    const BATTLE_SEED = 'btl-';
+
     private $client;
 
     public function __construct(RedisClient $client)
@@ -14,14 +16,23 @@ class BattleRepository
         $this->client = $client;
     }
 
-    public function getAllBattles(): array
+    public function findByUserToken(string $userToken): array
     {
-        return $this->client->keys('*');
+        if ($this->isValidUserToken($userToken)) {
+
+            $battleToken = $this->buildBattleTokenByUserToken($userToken);
+
+            return $this->getBattleByToken($battleToken);
+        }
+
+        return [];
     }
+
+
 
     public function getBattleByToken(string $battleToken): ?array
     {
-        return $this->isBattleToken($battleToken) ? json_decode($this->client->get($battleToken), true) : null;
+        return $this->isValidBattleToken($battleToken) ? json_decode($this->client->get($battleToken), true) : null;
     }
 
     public function battleExists(string $battleToken): bool
@@ -31,20 +42,30 @@ class BattleRepository
 
     public function persistBattle(string $battleToken, array $data)
     {
-        if ($this->isBattleToken($battleToken)) {
+        if ($this->isValidBattleToken($battleToken)) {
             $this->client->set($battleToken, json_encode($data));
         }
     }
 
     public function removeBattleByToken(string $battleToken)
     {
-        if ($this->isBattleToken($battleToken)) {
+        if ($this->isValidBattleToken($battleToken)) {
             $this->client->del($battleToken);
         }
     }
 
-    private function isBattleToken(string $battleToken): bool
+    private function isValidUserToken(string $token): bool
     {
-        return Token::LENGTH === strlen($battleToken);
+        return Token::USER_LENGTH === strlen($token);
+    }
+
+    private function isValidBattleToken(string $token): bool
+    {
+        return Token::BATTLE_LENGTH === strlen($token);
+    }
+
+    private function buildBattleTokenByUserToken(string $userToken): string
+    {
+        return self::BATTLE_SEED . $userToken;
     }
 }

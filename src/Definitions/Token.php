@@ -4,5 +4,6 @@ namespace App\Definitions;
 
 class Token
 {
-    const LENGTH = 32;
+    const USER_LENGTH = 36;
+    const BATTLE_LENGTH = 40;
 }

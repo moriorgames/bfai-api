@@ -2,6 +2,14 @@ index:
     path: /data
     controller: App\Controller\DataController::index
 
-get_battle:
-    path: /get-battle
+battle_get:
+    path: /battle/{token}
     controller: App\Controller\BattleController::get
+    methods: GET
+    defaults:
+        token: abcde
+
+battle_post:
+    path: /battle
+    controller: App\Controller\BattleController::create
+    methods: POST
