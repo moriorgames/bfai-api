@@ -2,21 +2,8 @@
 
 namespace App\Repository;
 
-use App\Services\TokenValidator;
-use Predis\Client as RedisClient;
-
-class BattleRepository
+class BattleRepository extends AbstractRedisRepository
 {
-    private $client;
-
-    private $tokenValidator;
-
-    public function __construct(RedisClient $client, TokenValidator $tokenValidator)
-    {
-        $this->client = $client;
-        $this->tokenValidator = $tokenValidator;
-    }
-
     public function findByUserToken(string $userToken): array
     {
         if ($this->tokenValidator->validate($userToken)) {

@@ -6,7 +6,7 @@ use App\Definitions\Token;
 
 class TokenValidator
 {
-    public function validate(string $token): bool
+    public function validate(?string $token): bool
     {
         return Token::LENGTH === strlen($token);
     }

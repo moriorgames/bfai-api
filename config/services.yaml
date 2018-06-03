@@ -40,7 +40,18 @@ services:
             - '@app.predis_client'
             - '@app.token_validator'
 
+    app.user_repository:
+        class: App\Repository\UserRepository
+        arguments:
+            - '@app.predis_client'
+            - '@app.token_validator'
+
     App\Controller\BattleController:
         public: true
         arguments:
             - "@app.battle_repository"
+
+    App\Controller\UserController:
+        public: true
+        arguments:
+            - "@app.user_repository"
