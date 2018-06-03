@@ -11,5 +11,5 @@ battle_get:
 
 battle_post:
     path: /battle
-    controller: App\Controller\BattleController::create
+    controller: App\Controller\BattleController::post
     methods: POST

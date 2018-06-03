@@ -25,3 +25,22 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    # Custom services
+    app.predis_client:
+        class: Predis\Client
+        factory: ['App\Factories\RedisClientStaticFactory', create]
+
+    app.token_validator:
+        class: App\Services\TokenValidator
+
+    app.battle_repository:
+        class: App\Repository\BattleRepository
+        arguments:
+            - '@app.predis_client'
+            - '@app.token_validator'
+
+    App\Controller\BattleController:
+        public: true
+        arguments:
+            - "@app.battle_repository"
