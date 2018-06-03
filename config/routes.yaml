@@ -6,8 +6,6 @@ user_get:
     path: /user/{token}
     controller: App\Controller\UserController::get
     methods: GET
-    defaults:
-        token: null
 
 battle_get:
     path: /battle/{token}
