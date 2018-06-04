@@ -46,12 +46,15 @@ services:
             - '@app.predis_client'
             - '@app.token_validator'
 
-    App\Controller\BattleController:
-        public: true
-        arguments:
-            - "@app.battle_repository"
-
+    # Controller
     App\Controller\UserController:
         public: true
         arguments:
             - "@app.user_repository"
+
+    # Use Case
+    App\UseCase\CreateBattleForUser:
+        public: true
+        arguments:
+            - "@app.user_repository"
+            - "@app.battle_repository"
