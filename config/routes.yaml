@@ -13,8 +13,3 @@ battle_get:
     methods: GET
     defaults:
         token: null
-
-battle_post:
-    path: /battle
-    controller: App\Controller\BattleController::post
-    methods: POST
