@@ -7,12 +7,15 @@
         "php": "^7.2",
         "ext-iconv": "*",
         "monolog/monolog": "^1.23",
+        "nelmio/api-doc-bundle": "^3.2",
         "predis/predis": "^1.1",
+        "symfony/asset": "^4.1",
         "symfony/console": "^4.1",
         "symfony/dotenv": "^4.1",
         "symfony/flex": "^1.0",
         "symfony/framework-bundle": "^4.1",
         "symfony/lts": "^4@dev",
+        "symfony/twig-bundle": "^4.1",
         "symfony/yaml": "^4.1"
     },
     "require-dev": {
