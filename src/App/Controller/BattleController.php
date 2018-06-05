@@ -10,10 +10,24 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class BattleController
 {
+    /**
+     * Get battle by token
+     *
+     * @Route("/api/battle", methods={"GET"})
+     * @Route("/api/battle/{token}", methods={"GET"})
+     *
+     * @SWG\Tag(name="battle")
+     * @SWG\Response(response=200, description="Success!.")
+     *
+     * @param null|string $token
+     *
+     * @return JsonResponse
+     */
     public function get(?string $token)
     {
         return new JsonResponse([
             'method' => 'GET',
+            'token' => $token,
             'status' => true,
         ]);
     }
