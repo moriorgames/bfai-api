@@ -2,30 +2,28 @@
 
 namespace App\Controller;
 
-use App\Repository\UserRepository;
+use App\UseCase\User\GetUserDataByToken;
+use Swagger\Annotations as SWG;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Routing\Annotation\Route;
 
 class UserController
 {
-    private $repository;
-
-    public function __construct(UserRepository $repository)
+    /**
+     * Get user data by token
+     *
+     * @Route("/api/user/{token}", methods={"GET"})
+     *
+     * @SWG\Tag(name="user")
+     * @SWG\Response(response=200, description="Success!.")
+     *
+     * @param GetUserDataByToken $useCase
+     * @param string             $token
+     *
+     * @return JsonResponse
+     */
+    public function get(GetUserDataByToken $useCase, string $token)
     {
-        $this->repository = $repository;
-    }
-
-    public function get(string $token)
-    {
-        $result = $this->repository->findByToken($token);
-        if ($result === null) {
-            $data = [
-                'battleToken' => 'ac90094b-3bfa-4d1c-9b4c-c2f50d5f7c28'
-            ];
-            $this->repository->persist($token, $data);
-        } else {
-            $this->repository->remove($token);
-        }
-
-        return new JsonResponse($result);
+        return new JsonResponse($useCase->execute($token));
     }
 }

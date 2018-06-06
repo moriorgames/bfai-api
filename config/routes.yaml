@@ -1,4 +1,0 @@
-user_get:
-    path: /user/{token}
-    controller: App\Controller\UserController::get
-    methods: GET
