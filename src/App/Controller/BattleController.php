@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\UseCase\CreateBattleForUser;
+use App\UseCase\Battle\CreateBattleForUser;
 use Swagger\Annotations as SWG;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
