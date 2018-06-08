@@ -31,20 +31,15 @@ services:
         class: Predis\Client
         factory: ['App\Factories\RedisClientStaticFactory', create]
 
-    app.token_validator:
-        class: App\Services\TokenValidator
-
     app.battle_repository:
         class: App\Repository\BattleRepository
         arguments:
             - '@app.predis_client'
-            - '@app.token_validator'
 
     app.user_repository:
         class: App\Repository\UserRepository
         arguments:
             - '@app.predis_client'
-            - '@app.token_validator'
 
     # Use Case
     App\UseCase\CreateBattleForUser:

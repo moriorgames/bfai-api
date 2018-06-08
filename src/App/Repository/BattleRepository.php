@@ -2,11 +2,13 @@
 
 namespace App\Repository;
 
+use App\Services\TokenValidator;
+
 class BattleRepository extends AbstractRedisRepository
 {
     public function findByUserToken(string $userToken): array
     {
-        if ($this->tokenValidator->validate($userToken)) {
+        if (TokenValidator::validate($userToken)) {
 
             $battleToken = $this->buildBattleTokenByUserToken($userToken);
 
@@ -18,7 +20,7 @@ class BattleRepository extends AbstractRedisRepository
 
     public function persistBattle(string $battleToken, string $json)
     {
-        if ($this->tokenValidator->validate($battleToken)) {
+        if (TokenValidator::validate($battleToken)) {
             $this->client->set($battleToken, $json);
         }
     }
@@ -32,7 +34,7 @@ class BattleRepository extends AbstractRedisRepository
      */
     public function getBattleByToken(string $battleToken): ?array
     {
-        return $this->tokenValidator->validate($battleToken) ? json_decode($this->client->get($battleToken), true) : null;
+        return TokenValidator::validate($battleToken) ? json_decode($this->client->get($battleToken), true) : null;
     }
 
     public function battleExists(string $battleToken): bool
@@ -43,7 +45,7 @@ class BattleRepository extends AbstractRedisRepository
 
     public function removeBattleByToken(string $battleToken)
     {
-        if ($this->tokenValidator->validate($battleToken)) {
+        if (TokenValidator::validate($battleToken)) {
             $this->client->del($battleToken);
         }
     }
