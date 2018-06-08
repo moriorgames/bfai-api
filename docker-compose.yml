@@ -22,8 +22,6 @@ services:
         - "5100:5100"
       links:
         - redis:redis
-#      volumes:
-#        - .:/var/www/html
 
     redis:
       image: redis

@@ -26,6 +26,9 @@
             "ref": "c8e0c38e1a280ab9e37587a8fa32b251d5bc1c94"
         }
     },
+    "paragonie/random_compat": {
+        "version": "v2.0.14"
+    },
     "phpdocumentor/reflection-common": {
         "version": "1.0.1"
     },
@@ -49,6 +52,9 @@
     },
     "psr/simple-cache": {
         "version": "1.0.1"
+    },
+    "ramsey/uuid": {
+        "version": "3.7.3"
     },
     "symfony/asset": {
         "version": "v4.1.0"

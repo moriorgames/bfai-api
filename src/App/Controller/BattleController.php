@@ -13,17 +13,16 @@ class BattleController
     /**
      * Get battle by token
      *
-     * @Route("/api/battle", methods={"GET"})
      * @Route("/api/battle/{token}", methods={"GET"})
      *
      * @SWG\Tag(name="battle")
      * @SWG\Response(response=200, description="Success!.")
      *
-     * @param null|string $token
+     * @param string $token
      *
      * @return JsonResponse
      */
-    public function get(?string $token)
+    public function get(string $token)
     {
         return new JsonResponse([
             'method' => 'GET',
@@ -38,6 +37,7 @@ class BattleController
      * @Route("/api/battle", methods={"POST"})
      *
      * @SWG\Tag(name="battle")
+     * @SWG\Parameter(name="userToken", in="query", type="string", description="User Token")
      * @SWG\Parameter(name="json", in="query", type="string", description="Json data")
      * @SWG\Response(response=200, description="Success!.")
      *
