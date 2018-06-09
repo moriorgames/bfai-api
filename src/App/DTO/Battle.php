@@ -8,17 +8,14 @@ class Battle
 
     private $status;
 
-    private $online;
-
     private $battleHeroes = [];
 
     private $skillHeroes = [];
 
-    public function __construct(string $battleToken, string $status, bool $online)
+    public function __construct(string $battleToken, string $status)
     {
         $this->battleToken = $battleToken;
         $this->status = $status;
-        $this->online = $online;
     }
 
     public function getBattleToken(): string
@@ -46,7 +43,7 @@ class Battle
         return [
             'battleToken'  => $this->battleToken,
             'status'       => $this->status,
-            'online'       => $this->online,
+            'online'       => true,
             'heroes'       => $this->battleHeroes,
             'skillsHeroes' => $this->skillHeroes,
         ];

@@ -26,7 +26,7 @@ class BattleController
     {
         return new JsonResponse([
             'method' => 'GET',
-            'token' => $token,
+            'token'  => $token,
             'status' => true,
         ]);
     }
@@ -37,8 +37,8 @@ class BattleController
      * @Route("/api/battle", methods={"POST"})
      *
      * @SWG\Tag(name="battle")
-     * @SWG\Parameter(name="userToken", in="query", type="string", description="User Token")
-     * @SWG\Parameter(name="json", in="query", type="string", description="Json data")
+     * @SWG\Parameter(name="userToken", in="formData", type="string", description="User Token")
+     * @SWG\Parameter(name="json", in="formData", type="string", description="Json data")
      * @SWG\Response(response=200, description="Success!.")
      *
      * @param CreateBattleForUser $useCase

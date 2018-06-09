@@ -2,18 +2,17 @@
 
 namespace App\Services;
 
+use App\Definitions\BattleStatus;
 use App\DTO\Battle;
 use App\DTO\BattleHero;
 use Ramsey\Uuid\Uuid;
 
 class BattleJsonTransformer
 {
-    const DEFAULT_STATUS = 'pending';
-
     public function transform(string $userToken, string $json): Battle
     {
         $battleToken = Uuid::uuid4();
-        $battle = new Battle($battleToken, self::DEFAULT_STATUS, true);
+        $battle = new Battle($battleToken, BattleStatus::PENDING);
         $data = json_decode($json, true);
         $this->assignBattleHeroes($userToken, $battle, $data);
 
