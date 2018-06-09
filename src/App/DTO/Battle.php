@@ -4,23 +4,51 @@ namespace App\DTO;
 
 class Battle
 {
-    private $userToken;
+    private $battleToken;
 
-    private $data;
+    private $status;
 
-    public function __construct(string $userToken, array $data)
+    private $online;
+
+    private $battleHeroes = [];
+
+    private $skillHeroes = [];
+
+    public function __construct(string $battleToken, string $status, bool $online)
     {
-        $this->userToken = $userToken;
-        $this->data = $data;
+        $this->battleToken = $battleToken;
+        $this->status = $status;
+        $this->online = $online;
     }
 
-    public function getUserToken(): string
+    public function getBattleToken(): string
     {
-        return $this->userToken;
+        return $this->battleToken;
     }
 
-    public function getData(): array
+    public function addBattleHero(BattleHero $battleHero): void
     {
-        return $this->data;
+        $this->battleHeroes[] = $battleHero;
+    }
+
+    public function addSkillHero(SkillHero $skillHero): void
+    {
+        $this->skillHeroes[] = $skillHero;
+    }
+
+    public function toJson(): string
+    {
+        return json_encode($this->toArray());
+    }
+
+    private function toArray(): array
+    {
+        return [
+            'battleToken'  => $this->battleToken,
+            'status'       => $this->status,
+            'online'       => $this->online,
+            'heroes'       => $this->battleHeroes,
+            'skillsHeroes' => $this->skillHeroes,
+        ];
     }
 }

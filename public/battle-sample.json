@@ -1,0 +1,71 @@
+{
+    "token": "some-uuid4-battle-token",
+    "online": false,
+    "heroes": [
+        {
+            "userToken": "",
+            "side": "local",
+            "battleHeroId": 1,
+            "heroId": 1,
+            "x": -8,
+            "y": 0
+        },
+        {
+            "userToken": "",
+            "side": "visitor",
+            "battleHeroId": 2,
+            "heroId": 1,
+            "x": 8,
+            "y": 0
+        },
+        {
+            "userToken": "bb883bdf-2a20-4c38-91f7-356981e70e93",
+            "side": "local",
+            "battleHeroId": 3,
+            "heroId": 2,
+            "x": -8,
+            "y": 2
+        },
+        {
+            "userToken": "bb883bdf-2a20-4c38-91f7-356981e70e93",
+            "side": "local",
+            "battleHeroId": 4,
+            "heroId": 3,
+            "x": -7,
+            "y": 1
+        },
+        {
+            "userToken": "j54tfg4AeMP4O8z9FgtWJEZeFYmmrtS3LpoaKbQ47FB",
+            "side": "visitor",
+            "battleHeroId": 5,
+            "heroId": 5,
+            "x": 8,
+            "y": 2
+        },
+        {
+            "userToken": "j54tfg4AeMP4O8z9FgtWJEZeFYmmrtS3LpoaKbQ47FB",
+            "side": "visitor",
+            "battleHeroId": 6,
+            "heroId": 3,
+            "x": 7,
+            "y": 1
+        },
+        {
+            "userToken": "j54tfg4AeMP4O8z9FgtWJEZeFYmmrtS3LpoaKbQ47FB",
+            "side": "visitor",
+            "battleHeroId": 7,
+            "heroId": 3,
+            "x": 7,
+            "y": -1
+        },
+        {
+            "userToken": "j54tfg4AeMP4O8z9FgtWJEZeFYmmrtS3LpoaKbQ47FB",
+            "side": "visitor",
+            "battleHeroId": 8,
+            "heroId": 4,
+            "x": 8,
+            "y": -2
+        }
+    ],
+    "skillsHeroes": []
+}
