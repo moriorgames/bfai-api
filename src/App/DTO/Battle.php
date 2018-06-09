@@ -38,7 +38,7 @@ class Battle
         return json_encode($this->toArray());
     }
 
-    private function toArray(): array
+    public function toArray(): array
     {
         return [
             'battleToken'  => $this->battleToken,

@@ -32,7 +32,7 @@ class BattleController
     }
 
     /**
-     * Create battle for user or add user into an existing battle.
+     * Returns pending user battle OR Create battle for user OR add user into a pending existing battle.
      *
      * @Route("/api/battle", methods={"POST"})
      *

@@ -12,7 +12,7 @@ class BattleJsonTransformer
     public function transform(string $userToken, string $json): Battle
     {
         $battleToken = Uuid::uuid4();
-        $battle = new Battle($battleToken, BattleStatus::PENDING);
+        $battle = new Battle($battleToken, BattleStatus::WAITING);
         $data = json_decode($json, true);
         $this->assignBattleHeroes($userToken, $battle, $data);
 
