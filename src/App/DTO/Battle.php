@@ -28,7 +28,7 @@ class Battle
 
     public function addBattleHero(BattleHero $battleHero): void
     {
-        $this->battleHeroes[] = $battleHero;
+        $this->battleHeroes[] = $battleHero->toArray();
     }
 
     public function addSkillHero(SkillHero $skillHero): void
