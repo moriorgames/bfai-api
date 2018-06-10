@@ -1,7 +1,7 @@
 # Build command:
 # docker build -t moriorgames/bfai-api .
 # Run command:
-# docker run -td --name bfai_api -p 80:80 moriorgames/bfai-api
+# docker run -td --name bfai_api -p 80:80 -p 443:443 moriorgames/bfai-api
 FROM        moriorgames/php72-base
 MAINTAINER  MoriorGames "moriorgames@gmail.com"
 
@@ -34,7 +34,7 @@ RUN         apt-get update
 RUN         apt-get install -y python-certbot-apache
 
 # Expose ports
-EXPOSE  80
+EXPOSE      80 443
 
 # Add run scripts
 ADD         docker/run.sh /run.sh
