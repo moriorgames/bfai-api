@@ -28,11 +28,6 @@ RUN         chown www-data:www-data /app -R
 RUN         chmod 755 -R var
 RUN         chmod 755 -R public
 
-# Install Certificate SSL
-RUN         add-apt-repository ppa:certbot/certbot
-RUN         apt-get update
-RUN         apt-get install -y python-certbot-apache
-
 # Expose ports
 EXPOSE      80 443
 
