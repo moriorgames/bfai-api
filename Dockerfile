@@ -13,6 +13,7 @@ RUN         echo "ServerName localhost" >> /etc/apache2/apache2.conf
 # config to enable .htaccess
 ADD         docker/vhost_default.conf /etc/apache2/sites-available/000-default.conf
 RUN         a2enmod rewrite
+RUN         a2enmod ssl
 
 # Create Application directory
 RUN         mkdir -p /app && rm -fr /var/www/html && ln -s /app /var/www/html
