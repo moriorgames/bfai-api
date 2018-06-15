@@ -1,7 +1,0 @@
-language: php
-sudo: required
-services:
-  - docker
-
-php:
-  - '7.2'
