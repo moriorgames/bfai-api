@@ -18,6 +18,8 @@ before_install:
   - docker pull moriorgames/bfai-api
   - docker build -t moriorgames/bfai-api .
 
+script: php phars/phpunit.phar --testdox
+
 after_success:
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
   - export REPO=moriorgames/bfai-api
