@@ -17,8 +17,9 @@ services:
 before_install:
   - docker pull moriorgames/bfai-api
   - docker build -t moriorgames/bfai-api .
+  - docker run -td --name bfai_api -p 80:80 -p 443:443 moriorgames/bfai-api
 
-script: php phars/phpunit.phar --testdox
+script: docker exec -ti bfai_api bash -c 'php phars/phpunit.phar --testdox'
 
 after_success:
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
