@@ -26,7 +26,7 @@ class CreateBattleForUser
             extract($data);
 
             $battle = (new BattleJsonTransformer)->transform($userToken, $json);
-            $this->battleRepo->persistBattle($battle->getBattleToken(), $battle->toJson());
+            $this->battleRepo->persist($userToken, $battle);
 
             return $battle->toArray();
         }

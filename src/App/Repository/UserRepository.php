@@ -6,7 +6,9 @@ use App\Services\TokenValidator;
 
 class UserRepository extends AbstractRedisRepository
 {
-    public function findByToken(string $token): ?array
+    const NAMESPACE = 'user-';
+
+    public function find(string $token): ?array
     {
         if (TokenValidator::validate($token)) {
 
@@ -16,7 +18,7 @@ class UserRepository extends AbstractRedisRepository
         return [];
     }
 
-    public function getByToken(string $token): ?array
+    private function getByToken(string $token): ?array
     {
         return json_decode($this->client->get($token), true);
     }

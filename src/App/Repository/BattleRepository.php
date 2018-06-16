@@ -2,10 +2,14 @@
 
 namespace App\Repository;
 
+use App\Definitions\Redis;
+use App\DTO\Battle;
 use App\Services\TokenValidator;
 
 class BattleRepository extends AbstractRedisRepository
 {
+    const NAMESPACE = 'battle-';
+
     public function findByUserToken(string $userToken): array
     {
         if (TokenValidator::validate($userToken)) {
@@ -18,11 +22,33 @@ class BattleRepository extends AbstractRedisRepository
         return [];
     }
 
-    public function persistBattle(string $battleToken, string $json)
+    public function persist(string $userToken, Battle $battle): void
     {
+        $battleToken = $battle->getBattleToken();
         if (TokenValidator::validate($battleToken)) {
-            $this->client->set($battleToken, $json);
+
+            $this->persistBattle($battle);
+
+            //// Assign battle to userToken
+            //$jsonRelateUserTodBattle = json_encode(['battleToken' => $battleToken]);
+            //$this->client->set($userToken, $jsonRelateUserTodBattle);
+            //$this->client->expire($battleToken, Redis::TTL);
+
         }
+    }
+
+    private function persistBattle(Battle $battle): void
+    {
+        $key = $this->key($battle->getBattleToken());
+        $this->client->set($key, $battle->toJson());
+        $this->client->expire($key, Redis::TTL);
+    }
+
+    private function relateBattleToUser(string $userToken, Battle $battle): void
+    {
+        $key = $this->key($battle->getBattleToken());
+        $this->client->set($key, $battle->toJson());
+        $this->client->expire($key, Redis::TTL);
     }
 
     // @todo work in progress
