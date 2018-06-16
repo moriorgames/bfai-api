@@ -7,7 +7,7 @@ use App\Repository\UserRepository;
 use App\Services\BattleJsonTransformer;
 use App\Services\TokenValidator;
 
-class CreateBattleForUser
+class StartBattleForUser
 {
     private $userRepo;
 
@@ -25,12 +25,35 @@ class CreateBattleForUser
             $userToken = $json = '';
             extract($data);
 
-            $battle = (new BattleJsonTransformer)->transform($userToken, $json);
-            $this->battleRepo->persist($userToken, $battle);
+            $battleArray = $this->getExistingBattle($userToken);
+            if ($battleArray === []) {
+                $battleArray = $this->createBattle($userToken, $json);
+            }
+            if ($battleArray === []) {
+                $battleArray = $this->joinToWaitingBattle($userToken, $json);
+            }
 
-            return $battle->toArray();
+            return $battleArray;
         }
 
+        return [];
+    }
+
+    private function getExistingBattle(string $userToken): array
+    {
+        return [];
+    }
+
+    private function createBattle(string $userToken, string $json): array
+    {
+        $battle = (new BattleJsonTransformer)->transform($userToken, $json);
+        $this->battleRepo->persist($userToken, $battle);
+
+        return $battle->toArray();
+    }
+
+    private function joinToWaitingBattle(string $userToken, string $json): array
+    {
         return [];
     }
 

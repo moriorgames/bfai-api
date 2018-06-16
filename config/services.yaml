@@ -42,7 +42,7 @@ services:
             - '@app.predis_client'
 
     # Use Case
-    App\UseCase\Battle\CreateBattleForUser:
+    App\UseCase\Battle\StartBattleForUser:
         public: true
         arguments:
             - "@app.user_repository"

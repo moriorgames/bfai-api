@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\UseCase\Battle\CreateBattleForUser;
+use App\UseCase\Battle\StartBattleForUser;
 use Swagger\Annotations as SWG;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -41,12 +41,12 @@ class BattleController
      * @SWG\Parameter(name="json", in="formData", type="string", description="Json data")
      * @SWG\Response(response=200, description="Success!.")
      *
-     * @param CreateBattleForUser $useCase
-     * @param Request             $request
+     * @param StartBattleForUser $useCase
+     * @param Request            $request
      *
      * @return JsonResponse
      */
-    public function post(CreateBattleForUser $useCase, Request $request)
+    public function post(StartBattleForUser $useCase, Request $request)
     {
         return new JsonResponse(
             $useCase->execute(
