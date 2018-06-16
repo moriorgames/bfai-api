@@ -19,13 +19,13 @@ RUN         a2enmod ssl
 RUN         mkdir -p /app && rm -fr /var/www/html && ln -s /app /var/www/html
 COPY        . /app
 WORKDIR     /app
+RUN         chown www-data:www-data /app -R
 
 # Composer variables
 ENV         COMPOSER_HOME /app
 
 # Build project
 RUN         php /app/phars/composer.phar install --optimize-autoloader
-RUN         chown www-data:www-data /app -R
 RUN         chmod 755 -R var
 RUN         chmod 755 -R public
 
