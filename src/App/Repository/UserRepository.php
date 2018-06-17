@@ -32,7 +32,7 @@ class UserRepository extends AbstractRedisRepository
 
     private function persistUser(User $user): void
     {
-        $key = $this->key($user->getBattleToken());
+        $key = $this->key($user->getUserToken());
         $this->client->set($key, $user->toJson());
         $this->client->expire($key, Redis::TTL);
     }

@@ -28,10 +28,10 @@ class StartBattleForUser
 
             $battleArray = $this->getExistingBattle($userToken);
             if ($battleArray === []) {
-                $battleArray = $this->createBattle($userToken, $json);
+                $battleArray = $this->joinToWaitingBattle($userToken, $json);
             }
             if ($battleArray === []) {
-                $battleArray = $this->joinToWaitingBattle($userToken, $json);
+                $battleArray = $this->createBattle($userToken, $json);
             }
 
             return $battleArray;
