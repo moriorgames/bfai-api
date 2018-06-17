@@ -10,6 +10,23 @@ class BattleRepository extends AbstractRedisRepository
 {
     const NAMESPACE = 'battle-';
 
+    public function find(string $token): array
+    {
+        if (TokenValidator::validate($token)) {
+
+            return $this->getByToken($token);
+        }
+
+        return [];
+    }
+
+    private function getByToken(string $token): array
+    {
+        $key = $this->key($token);
+
+        return json_decode($this->client->get($key), true) ?? [];
+    }
+
     public function findByUserToken(string $userToken): array
     {
         if (TokenValidator::validate($userToken)) {
@@ -22,7 +39,7 @@ class BattleRepository extends AbstractRedisRepository
         return [];
     }
 
-    public function persist(string $userToken, Battle $battle): void
+    public function persist(Battle $battle): void
     {
         $battleToken = $battle->getBattleToken();
         if (TokenValidator::validate($battleToken)) {

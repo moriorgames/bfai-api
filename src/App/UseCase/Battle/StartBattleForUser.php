@@ -2,6 +2,7 @@
 
 namespace App\UseCase\Battle;
 
+use App\DTO\User;
 use App\Repository\BattleRepository;
 use App\Repository\UserRepository;
 use App\Services\BattleJsonTransformer;
@@ -41,13 +42,22 @@ class StartBattleForUser
 
     private function getExistingBattle(string $userToken): array
     {
-        return [];
+        $userData = $this->userRepo->find($userToken);
+        if ($userData === []) {
+
+            return [];
+        }
+
+        return $this->battleRepo->find($userData['battleToken']);
     }
 
     private function createBattle(string $userToken, string $json): array
     {
         $battle = (new BattleJsonTransformer)->transform($userToken, $json);
-        $this->battleRepo->persist($userToken, $battle);
+        $this->battleRepo->persist($battle);
+
+        $user = new User($userToken, $battle->getBattleToken());
+        $this->userRepo->persist($user);
 
         return $battle->toArray();
     }
