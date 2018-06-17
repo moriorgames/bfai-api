@@ -18,6 +18,7 @@ script: docker exec -ti bfai_api bash -c 'php phars/phpunit.phar --testdox'
 
 after_success:
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
-  - docker tag $IMAGE $IMAGE:$COMMIT
-  - docker tag $IMAGE $IMAGE:latest
-  - docker push $IMAGE
+  - docker tag $IMAGE "${IMAGE}:${COMMIT}"
+  - docker tag $IMAGE "${IMAGE}:latest"
+  - docker push "${IMAGE}:latest"
+  - docker push "${IMAGE}:${COMMIT}"
