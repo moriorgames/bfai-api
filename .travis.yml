@@ -3,21 +3,21 @@ sudo: required
 
 language: php
 
+env:
+  - IMAGE="moriorgames/bfai-api"
+
 services:
   - docker
 
 before_install:
-  - docker pull moriorgames/bfai-api
-  - docker build -t moriorgames/bfai-api .
-  - docker run -td --name bfai_api -p 80:80 -p 443:443 moriorgames/bfai-api
+  - docker pull $IMAGE
+  - docker build -t $IMAGE .
+  - docker run -td --name bfai_api -p 80:80 -p 443:443 $IMAGE
 
 script: docker exec -ti bfai_api bash -c 'php phars/phpunit.phar --testdox'
 
 after_success:
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
-  - export REPO=moriorgames/bfai-api
-  - export TAG=$COMMIT
-  - docker build -f Dockerfile -t $REPO:$COMMIT .
-  - docker tag $REPO:$COMMIT $REPO:$TAG
-  - docker tag $REPO:$COMMIT $REPO:latest
-  - docker push $REPO
+  - docker tag $IMAGE $IMAGE:$COMMIT
+  - docker tag $IMAGE $IMAGE:latest
+  - docker push $IMAGE
