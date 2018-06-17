@@ -10,16 +10,6 @@ class UserRepository extends AbstractRedisRepository
 {
     const NAMESPACE = 'user-';
 
-    public function find(string $token): array
-    {
-        if (TokenValidator::validate($token)) {
-
-            return $this->getByToken($token);
-        }
-
-        return [];
-    }
-
     public function persist(User $user)
     {
         if (TokenValidator::validate($user->getUserToken())) {
@@ -27,11 +17,17 @@ class UserRepository extends AbstractRedisRepository
         }
     }
 
-    private function getByToken(string $token): array
+    public function remove(User $user)
     {
-        $key = $this->key($token);
+        $token = $user->getUserToken();
+        if (TokenValidator::validate($token)) {
+            $this->client->del($this->key($token));
+        }
+    }
 
-        return json_decode($this->client->get($key), true) ?? [];
+    protected function getByToken(string $token): array
+    {
+        return json_decode($this->client->get($this->key($token)), true) ?? [];
     }
 
     private function persistUser(User $user): void
@@ -39,12 +35,5 @@ class UserRepository extends AbstractRedisRepository
         $key = $this->key($user->getBattleToken());
         $this->client->set($key, $user->toJson());
         $this->client->expire($key, Redis::TTL);
-    }
-
-    public function remove(string $token)
-    {
-        if (TokenValidator::validate($token)) {
-            $this->client->del($token);
-        }
     }
 }
