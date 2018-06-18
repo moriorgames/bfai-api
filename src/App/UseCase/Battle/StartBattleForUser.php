@@ -53,10 +53,10 @@ class StartBattleForUser
 
     private function joinToWaitingBattle(string $userToken, string $json): array
     {
+        // @TODO work in progress we have to join user into waiting battle
         $activeBattle = $this->battleRepo->findActiveBattle();
 
-        print_r($activeBattle->toArray()); die;
-        return [];
+        return $activeBattle->toArray();
     }
 
     private function createBattle(string $userToken, string $json): array

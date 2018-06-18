@@ -26,6 +26,11 @@ abstract class AbstractRedisRepository
         return [];
     }
 
+    protected function findByToken(string $token): array
+    {
+        return json_decode($this->client->get($token), true) ?? [];
+    }
+
     protected function key(string $token): string
     {
         return static::NAMESPACE . $token;

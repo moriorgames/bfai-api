@@ -16,8 +16,7 @@ class BattleRepository extends AbstractRedisRepository
         $keys = $this->client->keys(static::NAMESPACE . '*');
         foreach ($keys as $token) {
 
-            print_r($token); die;
-            $data = $this->findWithNamespacedToken($token);
+            $data = $this->findByToken($token);
             if (!empty($data)) {
 
                 return ArrayToBattleStaticFactory::create($data);
@@ -43,11 +42,6 @@ class BattleRepository extends AbstractRedisRepository
     }
 
     protected function findWithNamespacedToken(string $token): array
-    {
-        return json_decode($this->client->get($this->key($token)), true) ?? [];
-    }
-
-    protected function getByToken(string $token): array
     {
         return json_decode($this->client->get($this->key($token)), true) ?? [];
     }
