@@ -5,10 +5,27 @@ namespace App\Repository;
 use App\Definitions\Redis;
 use App\DTO\Battle;
 use App\Services\TokenValidator;
+use App\Factories\ArrayToBattleStaticFactory;
 
 class BattleRepository extends AbstractRedisRepository
 {
     const NAMESPACE = 'battle-';
+
+    public function findActiveBattle(): ?Battle
+    {
+        $keys = $this->client->keys(static::NAMESPACE . '*');
+        foreach ($keys as $token) {
+
+            print_r($token); die;
+            $data = $this->findWithNamespacedToken($token);
+            if (!empty($data)) {
+
+                return ArrayToBattleStaticFactory::create($data);
+            }
+        }
+
+        return null;
+    }
 
     public function persist(Battle $battle): void
     {
@@ -23,6 +40,11 @@ class BattleRepository extends AbstractRedisRepository
         if (TokenValidator::validate($token)) {
             $this->client->del($this->key($token));
         }
+    }
+
+    protected function findWithNamespacedToken(string $token): array
+    {
+        return json_decode($this->client->get($this->key($token)), true) ?? [];
     }
 
     protected function getByToken(string $token): array

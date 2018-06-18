@@ -51,6 +51,14 @@ class StartBattleForUser
         return $this->battleRepo->find($userData['battleToken']);
     }
 
+    private function joinToWaitingBattle(string $userToken, string $json): array
+    {
+        $activeBattle = $this->battleRepo->findActiveBattle();
+
+        print_r($activeBattle->toArray()); die;
+        return [];
+    }
+
     private function createBattle(string $userToken, string $json): array
     {
         $battle = (new BattleJsonTransformer)->transform($userToken, $json);
@@ -60,11 +68,6 @@ class StartBattleForUser
         $this->userRepo->persist($user);
 
         return $battle->toArray();
-    }
-
-    private function joinToWaitingBattle(string $userToken, string $json): array
-    {
-        return [];
     }
 
     private function validateParams(array $data): bool

@@ -20,7 +20,7 @@ abstract class AbstractRedisRepository
     {
         if (TokenValidator::validate($token)) {
 
-            return $this->getByToken($token);
+            return $this->findWithNamespacedToken($token);
         }
 
         return [];
@@ -31,5 +31,5 @@ abstract class AbstractRedisRepository
         return static::NAMESPACE . $token;
     }
 
-    abstract protected function getByToken(string $token): array;
+    abstract protected function findWithNamespacedToken(string $token): array;
 }

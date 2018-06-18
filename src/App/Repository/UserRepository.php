@@ -25,7 +25,7 @@ class UserRepository extends AbstractRedisRepository
         }
     }
 
-    protected function getByToken(string $token): array
+    protected function findWithNamespacedToken(string $token): array
     {
         return json_decode($this->client->get($this->key($token)), true) ?? [];
     }
