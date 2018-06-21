@@ -34,6 +34,9 @@ class BattleHero
             throw new \UnexpectedValueException('Unexpeced value for side : ', $side);
         }
         $this->side = $side;
+        if ($this->side === GameConstants::SIDE_VISITOR) {
+            $this->x = abs($this->x);
+        }
     }
 
     public function toArray(): array

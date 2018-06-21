@@ -61,10 +61,9 @@ class StartBattleForUser
 
             $visitorBattle = (new BattleJsonTransformer)->transform($userToken, $json);
             $battle = (new BattleMergerBySide)->merge($localBattle, $visitorBattle);
+            $this->battleRepo->persist($battle);
 
-            //dump($battle->toArray());
-            //die;
-            //$this->battleRepo->persist($battle);
+            $this->relateBattleToUser($userToken, $battle);
 
             return $battle->toArray();
         }
@@ -77,10 +76,15 @@ class StartBattleForUser
         $battle = (new BattleJsonTransformer)->transform($userToken, $json);
         $this->battleRepo->persist($battle);
 
-        $user = new User($userToken, $battle->getBattleToken());
-        $this->userRepo->persist($user);
+        $this->relateBattleToUser($userToken, $battle);
 
         return $battle->toArray();
+    }
+
+    private function relateBattleToUser(string $userToken, Battle $battle): void
+    {
+        $user = new User($userToken, $battle->getBattleToken());
+        $this->userRepo->persist($user);
     }
 
     private function validateParams(array $data): bool
