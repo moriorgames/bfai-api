@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Definitions\BattleStatus;
 use App\Definitions\GameConstants;
 use App\DTO\Battle;
+use App\DTO\BattleHero;
 
 class BattleMergerBySide
 {
@@ -12,16 +13,18 @@ class BattleMergerBySide
     {
         $battle = new Battle($local->getBattleToken(), BattleStatus::IN_PROGRESS);
         $this->assignBattleHeroes($battle, $local, GameConstants::SIDE_LOCAL);
+        $this->assignBattleHeroes($battle, $visitor, GameConstants::SIDE_VISITOR);
 
         return $battle;
     }
 
     private function assignBattleHeroes(Battle $master, Battle $slave, string $side)
     {
-        foreach ($slave->toArray() as $index => $item) {
-            //dump($index, $item, $side);
-            //die;
-            //$master->addBattleHero();
+        /** @var BattleHero $hero */
+        foreach ($slave->getBattleHeroes() as $hero) {
+            //dump($hero); die;
+            //$hero->setSide($side);
+            //$master->addBattleHero($hero);
         }
     }
 }

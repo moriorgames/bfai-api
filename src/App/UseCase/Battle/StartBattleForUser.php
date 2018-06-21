@@ -7,6 +7,7 @@ use App\DTO\User;
 use App\Repository\BattleRepository;
 use App\Repository\UserRepository;
 use App\Services\BattleJsonTransformer;
+use App\Services\BattleMergerBySide;
 use App\Services\TokenValidator;
 
 class StartBattleForUser
@@ -55,11 +56,17 @@ class StartBattleForUser
     private function joinToWaitingBattle(string $userToken, string $json): array
     {
         // @TODO work in progress we have to join user into waiting battle
-        $activeBattle = $this->battleRepo->findActiveBattle();
-        if ($activeBattle instanceof Battle) {
+        $localBattle = $this->battleRepo->findActiveBattle();
+        if ($localBattle instanceof Battle) {
 
-            $battle = (new BattleJsonTransformer)->transform($userToken, $json);
-            var_dump($activeBattle->toArray());die;
+            $visitorBattle = (new BattleJsonTransformer)->transform($userToken, $json);
+            $battle = (new BattleMergerBySide)->merge($localBattle, $visitorBattle);
+
+            //dump($battle->toArray());
+            //die;
+            //$this->battleRepo->persist($battle);
+
+            return $battle->toArray();
         }
 
         return [];

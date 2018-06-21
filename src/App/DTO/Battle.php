@@ -23,9 +23,19 @@ class Battle
         return $this->battleToken;
     }
 
+    public function getBattleHeroes(): array
+    {
+        return $this->battleHeroes;
+    }
+
     public function addBattleHero(BattleHero $battleHero): void
     {
         $this->battleHeroes[] = $battleHero->toArray();
+    }
+
+    public function getSkillHeroes(): array
+    {
+        return $this->skillHeroes;
     }
 
     public function addSkillHero(SkillHero $skillHero): void

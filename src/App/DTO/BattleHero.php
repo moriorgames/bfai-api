@@ -2,6 +2,8 @@
 
 namespace App\DTO;
 
+use App\Definitions\GameConstants;
+
 class BattleHero
 {
     private $userToken;
@@ -19,11 +21,19 @@ class BattleHero
     public function __construct(string $userToken, string $side, int $battleHeroId, int $heroId, int $x, int $y)
     {
         $this->userToken = $userToken;
-        $this->side = $side;
+        $this->setSide($side);
         $this->battleHeroId = $battleHeroId;
         $this->heroId = $heroId;
         $this->x = $x;
         $this->y = $y;
+    }
+
+    public function setSide(string $side)
+    {
+        if (!in_array($side, GameConstants::ALLOWED_SIDE)) {
+            throw new \UnexpectedValueException('Unexpeced value for side : ', $side);
+        }
+        $this->side = $side;
     }
 
     public function toArray(): array
