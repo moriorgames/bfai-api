@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Definitions\BattleStatus;
 use App\DTO\Battle;
-use App\DTO\BattleHero;
 use Ramsey\Uuid\Uuid;
 
 class BattleJsonTransformer
@@ -21,12 +20,11 @@ class BattleJsonTransformer
 
     private function assignBattleHeroes(string $userToken, Battle $battle, array $data)
     {
+        $battleHeroArrayTransformer = new BattleHeroArrayTransformer;
         $battleHeroId = 1;
         foreach ($data['heroes'] as $hero) {
             if ($hero['userToken'] === '' || $hero['userToken'] === $userToken) {
-                $battleHero = new BattleHero(
-                    $hero['userToken'], $hero['side'], $battleHeroId, $hero['heroId'], $hero['x'], $hero['y']
-                );
+                $battleHero = $battleHeroArrayTransformer->transform($battleHeroId, $hero);
                 $battle->addBattleHero(
                     $battleHero
                 );
