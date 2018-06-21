@@ -2,6 +2,7 @@
 
 namespace App\UseCase\Battle;
 
+use App\DTO\Battle;
 use App\DTO\User;
 use App\Repository\BattleRepository;
 use App\Repository\UserRepository;
@@ -55,8 +56,13 @@ class StartBattleForUser
     {
         // @TODO work in progress we have to join user into waiting battle
         $activeBattle = $this->battleRepo->findActiveBattle();
+        if ($activeBattle instanceof Battle) {
 
-        return $activeBattle->toArray();
+            $battle = (new BattleJsonTransformer)->transform($userToken, $json);
+            var_dump($activeBattle->toArray());die;
+        }
+
+        return [];
     }
 
     private function createBattle(string $userToken, string $json): array
