@@ -7,16 +7,18 @@ services:
       ports:
         - "80:80"
         - "443:443"
-      links:
-        - redis:redis
 #      volumes:
 #        - .:/var/www/html
+      links:
+        - redis:redis
 
     battle_server:
       image: moriorgames/socket-server
       container_name: bfai_socket
       ports:
         - "5100:5100"
+#      volumes:
+#        - ../bfai-battle-server:/var/www/html
       links:
         - redis:redis
 
