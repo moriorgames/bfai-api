@@ -40,7 +40,7 @@ class Battle
 
     public function addSkillHero(SkillHero $skillHero): void
     {
-        $this->skillHeroes[] = $skillHero;
+        $this->skillHeroes[] = $skillHero->toArray();
     }
 
     public function toJson(): string

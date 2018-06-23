@@ -1,1 +1,96 @@
-{"token":"some-uuid4-battle-token","online":false,"heroes":[{"userToken":"","side":"local","battleHeroId":1,"heroId":1,"x":-8,"y":0},{"userToken":"","side":"visitor","battleHeroId":2,"heroId":1,"x":8,"y":0},{"userToken":"fd40ccdd-820c-4f13-9dab-ac1c0e2622ed","side":"local","battleHeroId":3,"heroId":2,"x":-8,"y":2},{"userToken":"fd40ccdd-820c-4f13-9dab-ac1c0e2622ed","side":"local","battleHeroId":4,"heroId":3,"x":-7,"y":1},{"userToken":"fd40ccdd-820c-4f13-9dab-ac1c0e2622ed","side":"local","battleHeroId":5,"heroId":4,"x":-7,"y":-1},{"userToken":"fd40ccdd-820c-4f13-9dab-ac1c0e2622ed","side":"local","battleHeroId":6,"heroId":5,"x":-8,"y":-2},{"userToken":"j54tfg4AeMP4O8z9FgtWJEZeFYmmrtS3LpoaKbQ47FB","side":"visitor","battleHeroId":7,"heroId":5,"x":8,"y":2},{"userToken":"j54tfg4AeMP4O8z9FgtWJEZeFYmmrtS3LpoaKbQ47FB","side":"visitor","battleHeroId":8,"heroId":3,"x":7,"y":1},{"userToken":"j54tfg4AeMP4O8z9FgtWJEZeFYmmrtS3LpoaKbQ47FB","side":"visitor","battleHeroId":9,"heroId":3,"x":7,"y":-1},{"userToken":"j54tfg4AeMP4O8z9FgtWJEZeFYmmrtS3LpoaKbQ47FB","side":"visitor","battleHeroId":10,"heroId":4,"x":8,"y":-2}],"skillsHeroes":[]}
+{
+    "token": "some-uuid4-battle-token",
+    "online": false,
+    "heroes": [
+        {
+            "userToken": "",
+            "side": "local",
+            "battleHeroId": 1,
+            "heroId": 1,
+            "x": -8,
+            "y": 0
+        },
+        {
+            "userToken": "",
+            "side": "visitor",
+            "battleHeroId": 2,
+            "heroId": 1,
+            "x": 8,
+            "y": 0
+        },
+        {
+            "userToken": "19580b94-58bb-44cb-8710-f19f804c67b4",
+            "side": "local",
+            "battleHeroId": 3,
+            "heroId": 2,
+            "x": -8,
+            "y": 2
+        },
+        {
+            "userToken": "19580b94-58bb-44cb-8710-f19f804c67b4",
+            "side": "local",
+            "battleHeroId": 4,
+            "heroId": 3,
+            "x": -7,
+            "y": 1
+        },
+        {
+            "userToken": "19580b94-58bb-44cb-8710-f19f804c67b4",
+            "side": "local",
+            "battleHeroId": 5,
+            "heroId": 5,
+            "x": -7,
+            "y": -1
+        },
+        {
+            "userToken": "j54tfg4AeMP4O8z9FgtWJEZeFYmmrtS3LpoaKbQ47FB",
+            "side": "visitor",
+            "battleHeroId": 6,
+            "heroId": 5,
+            "x": 8,
+            "y": 2
+        },
+        {
+            "userToken": "j54tfg4AeMP4O8z9FgtWJEZeFYmmrtS3LpoaKbQ47FB",
+            "side": "visitor",
+            "battleHeroId": 7,
+            "heroId": 3,
+            "x": 7,
+            "y": 1
+        },
+        {
+            "userToken": "j54tfg4AeMP4O8z9FgtWJEZeFYmmrtS3LpoaKbQ47FB",
+            "side": "visitor",
+            "battleHeroId": 8,
+            "heroId": 3,
+            "x": 7,
+            "y": -1
+        },
+        {
+            "userToken": "j54tfg4AeMP4O8z9FgtWJEZeFYmmrtS3LpoaKbQ47FB",
+            "side": "visitor",
+            "battleHeroId": 9,
+            "heroId": 4,
+            "x": 8,
+            "y": -2
+        }
+    ],
+    "skillsHeroes": [
+        {
+            "battleHeroId": 3,
+            "skillId": 6
+        },
+        {
+            "battleHeroId": 3,
+            "skillId": 6
+        },
+        {
+            "battleHeroId": 3,
+            "skillId": 7
+        },
+        {
+            "battleHeroId": 4,
+            "skillId": 7
+        }
+    ]
+}
