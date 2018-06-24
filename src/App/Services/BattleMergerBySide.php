@@ -12,9 +12,12 @@ class BattleMergerBySide
 
     private $heroTransformer;
 
+    private $skillTransformer;
+
     public function __construct()
     {
         $this->heroTransformer = new BattleHeroArrayTransformer;
+        $this->skillTransformer = new SkillHeroArrayTransformer;
     }
 
     public function merge(Battle $local, Battle $visitor): Battle
@@ -40,6 +43,7 @@ class BattleMergerBySide
     {
         foreach ($slave->getBattleHeroes() as $hero) {
             if ($hero['heroId'] > 1) {
+                $this->assignSkillsToCurrentHero($hero, $master, $slave, $side);
                 $this->addHeroToBattle($master, $hero, $side);
             }
         }
@@ -51,5 +55,17 @@ class BattleMergerBySide
         $battleHero->setSide($side);
         $battle->addBattleHero($battleHero);
         $this->battleHeroId++;
+    }
+
+    private function assignSkillsToCurrentHero(array $hero, Battle $master, Battle $slave, string $side): void
+    {
+        foreach ($slave->getSkillHeroes() as $skillData) {
+            if ($hero['battleHeroId'] === $skillData['battleHeroId']) {
+                $skillHero = $this->skillTransformer->transform($this->battleHeroId, $skillData);
+                $master->addSkillHero(
+                    $skillHero
+                );
+            }
+        }
     }
 }

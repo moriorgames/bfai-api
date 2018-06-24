@@ -20,7 +20,7 @@ class ArrayToBattleStaticFactory
             );
         }
         foreach ($data['skillsHeroes'] as $skill) {
-            $skillHero = new SkillHero;
+            $skillHero = new SkillHero($skill['battleHeroId'], $skill['skillId']);
             $battle->addSkillHero(
                 $skillHero
             );

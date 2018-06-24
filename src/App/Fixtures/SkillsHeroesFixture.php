@@ -26,6 +26,11 @@ class SkillsHeroesFixture
             'skillId' => SkillsFixture::BOOST_MOVE_ID,
             'cost'    => 3,
         ],
+        [
+            'heroId'  => HeroesFixture::JAIMIE_ID,
+            'skillId' => SkillsFixture::EXTRA_SHOT,
+            'cost'    => 3,
+        ],
         // PINK
         [
             'heroId'  => HeroesFixture::PINK_ID,

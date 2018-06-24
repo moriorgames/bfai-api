@@ -55,7 +55,6 @@ class StartBattleForUser
 
     private function joinToWaitingBattle(string $userToken, string $json): array
     {
-        // @TODO work in progress we have to join user into waiting battle
         $localBattle = $this->battleRepo->findActiveBattle();
         if ($localBattle instanceof Battle) {
 

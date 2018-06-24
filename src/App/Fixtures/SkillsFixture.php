@@ -24,6 +24,8 @@ class SkillsFixture
 
     const SPAWN_BOT_ID = 10;
 
+    const EXTRA_SHOT = 11;
+
     const END_OF_BATTLE_ID = 99;
 
     // --------- TYPES
@@ -39,6 +41,8 @@ class SkillsFixture
     const TYPE_CONE_AREA_DAMAGE = 5;
 
     const TYPE_SPAWN = 6;
+
+    const TYPE_EXTRA_SHOT = 7;
 
     const DATA = [
         [
@@ -148,6 +152,17 @@ class SkillsFixture
             'damage'     => 0,
             'ranged'     => 1,
             'extra'      => HeroesFixture::BOT_ID,
+            'unique'     => true,
+            'upgradable' => true,
+        ],
+        [
+            'id'         => SkillsFixture::EXTRA_SHOT,
+            'name'       => 'Extra Shot',
+            'slug'       => 'extra-shot',
+            'type'       => SkillsFixture::TYPE_EXTRA_SHOT,
+            'damage'     => 0,
+            'ranged'     => 0,
+            'extra'      => 0,
             'unique'     => true,
             'upgradable' => true,
         ],
