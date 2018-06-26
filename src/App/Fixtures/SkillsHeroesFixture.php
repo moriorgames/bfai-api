@@ -65,11 +65,6 @@ class SkillsHeroesFixture
         ],
         [
             'heroId'  => HeroesFixture::ATLAS_ID,
-            'skillId' => SkillsFixture::BOOST_RANGED_ID,
-            'cost'    => 4,
-        ],
-        [
-            'heroId'  => HeroesFixture::ATLAS_ID,
             'skillId' => SkillsFixture::BOOST_MOVE_ID,
             'cost'    => 4,
         ],
@@ -97,6 +92,22 @@ class SkillsHeroesFixture
         [
             'heroId'  => HeroesFixture::PAUL_ID,
             'skillId' => SkillsFixture::SHOTGUN_ID,
+            'cost'    => 3,
+        ],
+        // KATIA
+        [
+            'heroId'  => HeroesFixture::KATIA_ID,
+            'skillId' => SkillsFixture::BOOST_HEALTH_ID,
+            'cost'    => 2,
+        ],
+        [
+            'heroId'  => HeroesFixture::KATIA_ID,
+            'skillId' => SkillsFixture::BOOST_DAMAGE_ID,
+            'cost'    => 2,
+        ],
+        [
+            'heroId'  => HeroesFixture::KATIA_ID,
+            'skillId' => SkillsFixture::BOOST_MOVE_ID,
             'cost'    => 3,
         ],
         // FRACTAL
