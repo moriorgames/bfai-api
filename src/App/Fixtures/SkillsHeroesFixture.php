@@ -110,6 +110,22 @@ class SkillsHeroesFixture
             'skillId' => SkillsFixture::BOOST_MOVE_ID,
             'cost'    => 3,
         ],
+        // KNUCKLES
+        [
+            'heroId'  => HeroesFixture::KNUCKLES_ID,
+            'skillId' => SkillsFixture::BOOST_HEALTH_ID,
+            'cost'    => 1,
+        ],
+        [
+            'heroId'  => HeroesFixture::KNUCKLES_ID,
+            'skillId' => SkillsFixture::BOOST_DAMAGE_ID,
+            'cost'    => 2,
+        ],
+        [
+            'heroId'  => HeroesFixture::KNUCKLES_ID,
+            'skillId' => SkillsFixture::BOOST_MOVE_ID,
+            'cost'    => 4,
+        ],
         // FRACTAL
         [
             'heroId'  => HeroesFixture::FRACTAL_ID,
