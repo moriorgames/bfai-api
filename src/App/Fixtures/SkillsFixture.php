@@ -26,6 +26,10 @@ class SkillsFixture
 
     const EXTRA_SHOT = 11;
 
+    const SMASH = 12;
+
+    const JUMP = 13;
+
     const END_OF_BATTLE_ID = 99;
 
     // --------- TYPES
@@ -43,6 +47,8 @@ class SkillsFixture
     const TYPE_SPAWN = 6;
 
     const TYPE_EXTRA_SHOT = 7;
+
+    const TYPE_JUMP = 8;
 
     const DATA = [
         [
@@ -162,6 +168,28 @@ class SkillsFixture
             'type'       => SkillsFixture::TYPE_EXTRA_SHOT,
             'damage'     => 0,
             'ranged'     => 0,
+            'extra'      => 0,
+            'unique'     => true,
+            'upgradable' => true,
+        ],
+        [
+            'id'         => SkillsFixture::SMASH,
+            'name'       => 'Smash',
+            'slug'       => 'smash',
+            'type'       => SkillsFixture::TYPE_CONE_AREA_DAMAGE,
+            'damage'     => 5,
+            'ranged'     => 1,
+            'extra'      => 0,
+            'unique'     => true,
+            'upgradable' => true,
+        ],
+        [
+            'id'         => SkillsFixture::JUMP,
+            'name'       => 'Jump',
+            'slug'       => 'jump',
+            'type'       => SkillsFixture::TYPE_JUMP,
+            'damage'     => 0,
+            'ranged'     => 2,
             'extra'      => 0,
             'unique'     => true,
             'upgradable' => true,
