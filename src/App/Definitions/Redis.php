@@ -4,5 +4,5 @@ namespace App\Definitions;
 
 class Redis
 {
-    const TTL = 3600;
+    const TTL = 300;
 }

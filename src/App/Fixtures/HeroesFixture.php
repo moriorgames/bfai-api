@@ -18,9 +18,9 @@ class HeroesFixture
 
     const KNUCKLES_ID = 7;
 
-    const FRACTAL_ID = 10;
+    const FRACTAL_ID = 8;
 
-    const BOT_ID = 11;
+    const BOT_ID = 9;
 
     const SHIELD_ID = 12;
 
