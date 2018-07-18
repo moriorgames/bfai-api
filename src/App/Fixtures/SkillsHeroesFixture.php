@@ -68,6 +68,11 @@ class SkillsHeroesFixture
             'skillId' => SkillsFixture::BOOST_MOVE_ID,
             'cost'    => 4,
         ],
+        [
+            'heroId'  => HeroesFixture::ATLAS_ID,
+            'skillId' => SkillsFixture::MITIGATION,
+            'cost'    => 2,
+        ],
         // PAUL
         [
             'heroId'  => HeroesFixture::PAUL_ID,

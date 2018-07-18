@@ -30,6 +30,8 @@ class SkillsFixture
 
     const JUMP = 13;
 
+    const MITIGATION = 14;
+
     const END_OF_BATTLE_ID = 99;
 
     // --------- TYPES
@@ -49,6 +51,8 @@ class SkillsFixture
     const TYPE_EXTRA_SHOT = 7;
 
     const TYPE_JUMP = 8;
+
+    const TYPE_SHIELD = 9;
 
     const DATA = [
         [
@@ -191,6 +195,17 @@ class SkillsFixture
             'damage'     => 0,
             'ranged'     => 2,
             'extra'      => 0,
+            'unique'     => true,
+            'upgradable' => true,
+        ],
+        [
+            'id'         => SkillsFixture::MITIGATION,
+            'name'       => 'Mitigation',
+            'slug'       => 'mitigation',
+            'type'       => SkillsFixture::TYPE_SHIELD,
+            'damage'     => 0,
+            'ranged'     => 1,
+            'extra'      => 1,
             'unique'     => true,
             'upgradable' => true,
         ],
