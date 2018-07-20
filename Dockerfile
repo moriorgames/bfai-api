@@ -6,8 +6,11 @@ FROM        moriorgames/php72-base
 MAINTAINER  MoriorGames "moriorgames@gmail.com"
 
 # Install some packages to create http server
-RUN         apt-get install -y zip unzip
-RUN         apt-get -y install git apache2
+RUN         apt-get update --fix-missing && apt-get install -y \
+            zip \
+            unzip \
+            git \
+            apache2
 RUN         echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
 # config to enable .htaccess
