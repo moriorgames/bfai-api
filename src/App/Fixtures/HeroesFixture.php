@@ -22,7 +22,7 @@ class HeroesFixture
 
     const BOT_ID = 9;
 
-    const SHIELD_ID = 12;
+    const SHIELD_ID = 10;
 
     const DRONE_ID = 13;
 
@@ -167,15 +167,15 @@ class HeroesFixture
             'id'           => HeroesFixture::SHIELD_ID,
             'name'         => 'Shield',
             'slug'         => 'shield',
-            'damage'       => 1,
+            'damage'       => 2,
             'ranged'       => 1,
-            'health'       => 1,
+            'health'       => 30,
             'movement'     => 1,
-            'cost'         => 1,
+            'cost'         => 4,
             'moveFrames'   => 1,
             'attackFrames' => 1,
-            'size'         => 1,
-            'enabled'      => false,
+            'size'         => 6,
+            'enabled'      => true,
         ],
         [
             'id'           => HeroesFixture::DRONE_ID,

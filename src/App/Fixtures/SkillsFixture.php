@@ -32,6 +32,10 @@ class SkillsFixture
 
     const MITIGATION = 14;
 
+    const BURST = 15;
+
+    const SHIELD = 16;
+
     const END_OF_BATTLE_ID = 99;
 
     // --------- TYPES
@@ -53,6 +57,8 @@ class SkillsFixture
     const TYPE_JUMP = 8;
 
     const TYPE_SHIELD = 9;
+
+    const TYPE_LINE_AREA_DAMAGE = 10;
 
     const DATA = [
         [
@@ -205,7 +211,29 @@ class SkillsFixture
             'type'       => SkillsFixture::TYPE_SHIELD,
             'damage'     => 0,
             'ranged'     => 1,
-            'extra'      => 1,
+            'extra'      => 2,
+            'unique'     => true,
+            'upgradable' => true,
+        ],
+        [
+            'id'         => SkillsFixture::BURST,
+            'name'       => 'Burst',
+            'slug'       => 'burst',
+            'type'       => SkillsFixture::TYPE_LINE_AREA_DAMAGE,
+            'damage'     => 4,
+            'ranged'     => 5,
+            'extra'      => 0,
+            'unique'     => true,
+            'upgradable' => true,
+        ],
+        [
+            'id'         => SkillsFixture::SHIELD,
+            'name'       => 'Shield',
+            'slug'       => 'shield',
+            'type'       => SkillsFixture::TYPE_SHIELD,
+            'damage'     => 0,
+            'ranged'     => 2,
+            'extra'      => 4,
             'unique'     => true,
             'upgradable' => true,
         ],

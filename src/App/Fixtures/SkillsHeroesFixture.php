@@ -52,6 +52,11 @@ class SkillsHeroesFixture
             'skillId' => SkillsFixture::BOOST_MOVE_ID,
             'cost'    => 4,
         ],
+        [
+            'heroId'  => HeroesFixture::PINK_ID,
+            'skillId' => SkillsFixture::BURST,
+            'cost'    => 2,
+        ],
         // ATLAS
         [
             'heroId'  => HeroesFixture::ATLAS_ID,
@@ -187,6 +192,27 @@ class SkillsHeroesFixture
             'heroId'  => HeroesFixture::BOT_ID,
             'skillId' => SkillsFixture::BOOST_MOVE_ID,
             'cost'    => 1,
+        ],
+        // SHIELD
+        [
+            'heroId'  => HeroesFixture::SHIELD_ID,
+            'skillId' => SkillsFixture::BOOST_HEALTH_ID,
+            'cost'    => 1,
+        ],
+        [
+            'heroId'  => HeroesFixture::SHIELD_ID,
+            'skillId' => SkillsFixture::BOOST_DAMAGE_ID,
+            'cost'    => 3,
+        ],
+        [
+            'heroId'  => HeroesFixture::SHIELD_ID,
+            'skillId' => SkillsFixture::BOOST_MOVE_ID,
+            'cost'    => 2,
+        ],
+        [
+            'heroId'  => HeroesFixture::SHIELD_ID,
+            'skillId' => SkillsFixture::SHIELD,
+            'cost'    => 2,
         ],
     ];
 }
